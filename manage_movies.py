@@ -5,7 +5,8 @@ def manage_menu(movies):
         print("1 Add movie")
         print("2 Update rating")
         print("3 Remove movie")
-        print("4 Back")
+        print("4 Toggle Watchlist Status") # New Option
+        print("5 Back")
 
         choice = input("Select option: ")
 
@@ -50,7 +51,17 @@ def manage_menu(movies):
                     movies.remove(movie)
                     print("Movie removed")
                     break
-        elif choice == "4":
+
+        #Watchlist Status - New Option
+        elif choice == "4": 
+            title = input("Movie title to toggle status: ")
+            for movie in movies:
+                if movie["title"].lower() == title.lower():
+                    movie["watched"] = not movie.get("watched", False)
+                    status = "Watched" if movie["watched"] else "Watchlist"
+                    print(f"Status updated to: {status}")
+        
+        elif choice == "5":
             return movies
         else:
             print("Invalid input")

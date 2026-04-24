@@ -8,7 +8,8 @@ def display_menu(movies):
         print("2 Filter by genre")
         print("3 Search movie")
         print("4 Sort by rating")
-        print("5 Back")
+        print("5 Show Watchlist only") # New Option
+        print("6 Back")
 
         choice = input("Select option: ")
         if choice == "1":
@@ -45,9 +46,17 @@ def display_menu(movies):
         elif choice == "4":
             sorted_movies = sorted(movies, key=lambda m: m["rating"], reverse=True)
             print_table(sorted_movies)
-        
-        # back
+
+        #Show Watchlist
         elif choice == "5":
+            watchlist = [m for m in movies if not m.get("watched", True)]
+            if watchlist:
+                print_table(watchlist)
+            else:
+                print("Watchlist is empty!")
+
+        # back
+        elif choice == "6":
             break
         else:
             print("Invalid input")
