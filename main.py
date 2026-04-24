@@ -3,6 +3,7 @@ from manage_movies import manage_menu
 from summary import show_summary
 from dummy_data import load_dummy_data
 from storage import save_movies, load_movies
+from recommend_movie import recommend_a_movie 
 
 movies = []
 
@@ -18,7 +19,8 @@ def main():
         print("4 Load dummy data")
         print("5 Save movies to file")
         print("6 Load movies from file")
-        print("7 Exit")
+        print("7 Recommended Movie") 
+        print("8 Exit")
 
         choice = input("Select option: ")
         print(f"selected option: {choice}")
@@ -36,6 +38,8 @@ def main():
         elif choice == "6":
             movies = load_movies()
         elif choice == "7":
+            recommend_a_movie(movies)
+        elif choice == "8":
             print("Goodbye")
             break
         else:
