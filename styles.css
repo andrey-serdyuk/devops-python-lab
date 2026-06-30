@@ -1,0 +1,254 @@
+:root {
+  --bg: #0f1117;
+  --bg-elev: #171a23;
+  --bg-elev-2: #1f232f;
+  --border: #2a2f3c;
+  --text: #e7e9ee;
+  --text-dim: #9aa1b1;
+  --accent: #ffb020;
+  --accent-soft: rgba(255, 176, 32, 0.12);
+  --primary: #5b8def;
+  --primary-hover: #6f9cf3;
+  --danger: #f0506e;
+  --radius: 12px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(1200px 600px at 80% -10%, #1a1f2e 0%, var(--bg) 55%);
+  color: var(--text);
+  font-family: "Inter", system-ui, sans-serif;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-mark {
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+.brand h1 {
+  font-family: "Sora", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+}
+.topbar-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* Buttons */
+.btn {
+  font: inherit;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.05s;
+  color: var(--text);
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--primary); border-color: var(--primary); }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-ghost { background: var(--bg-elev); border-color: var(--border); }
+.btn-ghost:hover { background: var(--bg-elev-2); border-color: #3a4151; }
+.btn-icon {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: var(--text-dim);
+  cursor: pointer;
+  font: inherit;
+}
+.btn-icon:hover { background: var(--bg-elev-2); color: var(--text); }
+.btn-icon--danger:hover { color: var(--danger); }
+
+/* Summary */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.stat-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.stat-card--accent {
+  background: linear-gradient(135deg, var(--accent-soft), transparent);
+  border-color: rgba(255, 176, 32, 0.3);
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.stat-value {
+  font-family: "Sora", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+.stat-card--accent .stat-value { color: var(--accent); font-size: 20px; }
+
+/* Panels */
+.panel {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.panel-title {
+  font-family: "Sora", sans-serif;
+  font-size: 17px;
+  margin: 0 0 16px;
+}
+
+/* Form */
+.movie-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+.field { display: flex; flex-direction: column; gap: 6px; flex: 1 1 180px; }
+.field--narrow { flex: 0 1 140px; }
+.field label { font-size: 13px; color: var(--text-dim); }
+input, select {
+  font: inherit;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 10px 12px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+input:focus, select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(91, 141, 239, 0.18);
+}
+.form-actions { display: flex; gap: 10px; }
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.toolbar-group { display: flex; gap: 12px; }
+.toolbar-group--grow { flex: 1 1 240px; }
+.toolbar-group--grow input { width: 100%; }
+
+/* Table */
+.panel--table { padding: 6px 6px 10px; overflow: hidden; }
+.movie-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.movie-table th, .movie-table td {
+  text-align: left;
+  padding: 14px 16px;
+}
+.movie-table thead th {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+}
+.movie-table tbody tr {
+  border-bottom: 1px solid rgba(42, 47, 60, 0.6);
+  transition: background 0.12s;
+}
+.movie-table tbody tr:last-child { border-bottom: none; }
+.movie-table tbody tr:hover { background: var(--bg-elev-2); }
+.col-id { width: 48px; color: var(--text-dim); }
+.col-rating { width: 110px; }
+.col-actions { width: 130px; text-align: right; }
+td.col-actions { text-align: right; white-space: nowrap; }
+.cell-title { font-weight: 600; }
+.genre-tag {
+  display: inline-block;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 11px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.rating-badge {
+  font-family: "Sora", sans-serif;
+  font-weight: 600;
+}
+.rating-badge[data-tier="high"] { color: #4ade80; }
+.rating-badge[data-tier="mid"] { color: var(--accent); }
+.rating-badge[data-tier="low"] { color: var(--danger); }
+
+.empty {
+  text-align: center;
+  color: var(--text-dim);
+  padding: 32px 16px;
+}
+
+.footer {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 13px;
+  margin-top: 24px;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  font-weight: 500;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.toast--error { border-color: var(--danger); }
+
+@media (max-width: 620px) {
+  .summary { grid-template-columns: 1fr; }
+  .col-actions, .movie-table th.col-actions { width: auto; }
+}
